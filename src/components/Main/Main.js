@@ -9,7 +9,7 @@ function Main() {
   const initiateGame = e => {
     e.preventDefault();
     return axiosWithAuth()
-      .get("api/adv/chambers")
+      .get("api/adv/init")
       .then(res => {
         console.log('MAIL CALL', res)
       })
