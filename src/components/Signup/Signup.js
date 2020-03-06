@@ -14,60 +14,62 @@ const Signup = props => {
   }, [status]);
 
   return (
-    <div className="login-panel">
-      <div className="login-title">
-        <h1>SIGN UP</h1>
+    <>
+      <div className="login-panel">
+        <div className="login-title">
+          <h1>SIGN UP</h1>
+        </div>
+        <FormikForm use="semantic-ui-react" className="login-form">
+          <div>
+            <Form.Field>
+              <Field
+                className="login-input one"
+                type="username"
+                name="username"
+                data-testid="username"
+                placeholder="Username"
+              />
+              {touched.username && errors.username && (
+                <p className="error">{errors.username}</p>
+              )}
+            </Form.Field>
+          </div>
+          <div>
+            <Form.Field>
+              <Field
+                className="login-input"
+                type="password"
+                name="password1"
+                data-testid="password1"
+                placeholder="Password"
+              />
+              {/* {touched.password && errors.password && <p className="error">{errors.password}</p>} */}
+            </Form.Field>
+          </div>{" "}
+          <div>
+            <Form.Field>
+              <Field
+                className="login-input"
+                type="password"
+                name="password2"
+                data-testid="password2"
+                placeholder="Confirm Password"
+              />
+              {/* {touched.password && errors.password && <p className="error">{errors.password}</p>} */}
+            </Form.Field>
+          </div>
+          <div>
+            <button
+              className="login-button"
+              onClick={handleSubmit}
+              type="submit"
+            >
+              SUBMIT
+            </button>
+          </div>
+        </FormikForm>
       </div>
-      <FormikForm use="semantic-ui-react" className="login-form">
-        <div>
-          <Form.Field>
-            <Field
-              className="login-input one"
-              type="username"
-              name="username"
-              data-testid="username"
-              placeholder="Username"
-            />
-            {touched.username && errors.username && (
-              <p className="error">{errors.username}</p>
-            )}
-          </Form.Field>
-        </div>
-        <div>
-          <Form.Field>
-            <Field
-              className="login-input"
-              type="password"
-              name="password1"
-              data-testid="password1"
-              placeholder="Password"
-            />
-            {/* {touched.password && errors.password && <p className="error">{errors.password}</p>} */}
-          </Form.Field>
-        </div>{" "}
-        <div>
-          <Form.Field>
-            <Field
-              className="login-input"
-              type="password"
-              name="password2"
-              data-testid="password2"
-              placeholder="Confirm Password"
-            />
-            {/* {touched.password && errors.password && <p className="error">{errors.password}</p>} */}
-          </Form.Field>
-        </div>
-        <div>
-          <button
-            className="login-button"
-            onClick={handleSubmit}
-            type="submit"
-          >
-            SUBMIT
-          </button>
-        </div>
-      </FormikForm>
-    </div>
+    </>
   );
 };
 
@@ -88,12 +90,12 @@ const FormikLoginForm = withFormik({
   }),
   
   handleSubmit(values, { props, setStatus, handleSubmit: e }) {
-    e.preventDefault()
+    // e.preventDefault()
 
-    return axiosWithAuth
+    return axiosWithAuth()
       .post("api/registration/", values)
       .then(res => {
-        console.log(res.data);
+        console.log('Registered!');
         localStorage.setItem("token", res.data.key);
         setStatus(res.data);
         const id = res.data.id;

@@ -19,11 +19,11 @@ export default function Login(props) {
   const submitHandler = (e, state) => {
     e.preventDefault();
     return axiosWithAuth()
-      .post("api/login", state)
+      .post("api/login/", state)
       .then(res => {
         console.log("Logging in");
         localStorage.setItem("token", res.data.key);
-        props.history.push("/");
+        props.history.push("/game");
       })
       .catch(err => {
         console.log(err);
@@ -42,13 +42,13 @@ export default function Login(props) {
           textAlign: "center",
           height: "620px",
           width: "100%",
-          height: "100vh",
+          height: "50vh",
+          zIndex: '5'
         }}
         onSubmit={e => submitHandler(e, state)}
       >
         <div>
           <div className="title"> Sign in to your account </div>
-          {/* <img src={dragon} style={{ width: "7.5rem" }} /> */}
 
           <div className="label"> Username </div>
           <input

@@ -19,7 +19,7 @@ function Main() {
   };
 
   return (
-    <div>
+    <div className='main'>
       <h1>Welcome to Mars Underground</h1>
       <img src='https://i.pinimg.com/originals/fe/2c/64/fe2c646744bf4b17d310aed8240aedb3.png'/>
 
