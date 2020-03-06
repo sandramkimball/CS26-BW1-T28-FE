@@ -1,5 +1,4 @@
 import React from "react";
-// import Dashboard from "./components/Dashboard";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
 import Login from "./authentication/Login";
 // import Register from "./authentication/Register";

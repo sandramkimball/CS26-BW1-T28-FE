@@ -26,3 +26,14 @@
   color: white;
 }
 
+.NavBar{
+  display: flex;
+  height: 5vh;
+  width: 100%;
+  z-index: 1;
+}
+.NavBar p{
+  color: white;
+  cursor: pointer;
+  padding: 4px 10px;
+}

@@ -11,3 +11,10 @@ h1{
     margin: auto;
     padding-top: 5vh;
 }
+
+img{
+    position: fixed;
+    left: 0;
+    bottom: 5vh;
+    height: 30vh;
+}
