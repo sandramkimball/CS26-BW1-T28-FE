@@ -37,3 +37,21 @@
   cursor: pointer;
   padding: 4px 10px;
 }
+
+.map_display{
+  height: 60vh;
+  width: 65vw;
+  border: 1px solid rgb(182, 37, 1);
+  margin: auto;
+}
+
+.map_display p{
+  padding-top: 20px;
+  width: 100px;
+  height: 100px;
+  background: rgb(156, 47, 33);
+  border: 4px solid rgb(105, 20, 20);
+  color: #fff;
+  font-size: .7rem;
+  text-align: center;
+}
