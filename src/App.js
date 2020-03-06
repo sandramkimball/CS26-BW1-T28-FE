@@ -1,7 +1,4 @@
 import React from "react";
-import { Route } from "react-router-dom";
-// import UserContext from "./contexts/UserContext";
-
 import "./App.css";
 import Routes from "./Routes";
 

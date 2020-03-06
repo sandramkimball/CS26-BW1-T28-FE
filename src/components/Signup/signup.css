@@ -2,13 +2,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 10%;
-    border: 3px solid white;
-    background: rgb(24, 24, 154);
+    width: 100%;
+    padding-top: 10vh;
+    margin: 0 auto;
 }
 
 .login-title {
-    font-family: 'MedievalSharp', cursive;
     color: white;
     font-size: 1em;
 }
@@ -17,7 +16,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
 }
 
 .login-input {
