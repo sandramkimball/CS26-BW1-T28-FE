@@ -3,17 +3,11 @@ import { Form as FormikForm, Field, withFormik } from "formik";
 import * as Yup from "yup";
 import { Form } from "semantic-ui-react";
 // import { axiosWithAuth } from "../../utils/axiosWithAuth";
-// import UserContext from "../../contexts/UserContext";
-// import NavBarSignup from '../Nav/NavBarSignup';
 import axios from "axios";
 import "./signup.css";
 
 const Signup = props => {
-  console.log(props);
-
-  //   const { getUser } = useContext(UserContext);
-  const [State, setState] = useState({});
-
+  const [state, setState] = useState({});
   const { errors, touched, values, handleSubmit, status } = props;
 
   useEffect(() => {
@@ -98,13 +92,13 @@ const FormikLoginForm = withFormik({
     // e.preventDefault()
 
     axios
-      .post("https://lambda-mud-test.herokuapp.com/api/registration/", values)
+      .post("http://127.0.0.1:8000/api/registration/", values)
       .then(res => {
         console.log(res.data);
         localStorage.setItem("token", res.data.key);
         setStatus(res.data);
         const id = res.data.id;
-        props.history.push(`/`);
+        props.history.push(`/login`);
       })
       .catch(err => console.log(err.response));
   }

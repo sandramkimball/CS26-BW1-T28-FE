@@ -12,10 +12,9 @@ function Routes(props) {
     <div>
       <BrowserRouter>
         <Switch>
-          <Route exact path="/" render={props => <Login {...props} />} />
+          <Route exact path="/login" render={props => <Login {...props} />} />
           <Route path="/registration" render={props => <Signup {...props} />} />
-          <Route path="/mainpage" render={props => <Main {...props} />} />
-          {/* <PrivateRoute exact path="/" component={Dashboard} /> */} */}
+          <Route path="/game" render={props => <Main {...props} />} />
         </Switch>
       </BrowserRouter>
     </div>

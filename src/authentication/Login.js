@@ -1,15 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-// import dragon from "./reddragon.jpg"
-// import { createGlobalStyle } from "styled-components";
 import "./login.css";
-// const GlobalStyles = createGlobalStyle`
-//   @import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
-//   body {
-//     font-family: 'Notable', sans-serif;
-//   }
-// `;
 
 export default function Login(props) {
   const [state, setState] = useState({
@@ -27,11 +19,11 @@ export default function Login(props) {
   const submitHandler = (e, state) => {
     e.preventDefault();
     axios
-      .post("https://lambda-mud-test.herokuapp.com/api/login/", state)
+      .post("http://127.0.0.1:8000/api/login", state)
       .then(res => {
-        console.log("RESPONSE", res);
+        console.log("Logging in");
         localStorage.setItem("token", res.data.key);
-        props.history.push("/mainpage");
+        props.history.push("/");
       })
       .catch(err => {
         console.log(err);
@@ -48,10 +40,9 @@ export default function Login(props) {
       <form
         style={{
           textAlign: "center",
-          background: "#2d2db7",
           height: "620px",
           width: "100%",
-          height: "100vh"
+          height: "100vh",
         }}
         onSubmit={e => submitHandler(e, state)}
       >
@@ -107,34 +98,3 @@ export default function Login(props) {
     </div>
   );
 }
-
-// const Title = styled.h1`
-//   font-size: 1.5em;
-//   text-align: center;
-//   color: #f5f5f3;
-//   margin-top: 0px;
-//   padding-top: 50px;
-//   font-family: "Press Start 2P", cursive;
-//   padding-bottom: 60px;
-// `;
-// const Label = styled.h1`
-//   font-size: 1em;
-//   text-align: center;
-//   color: white;
-//   padding-top: 10px;
-//   font-family: "Press Start 2P", cursive;
-// `;
-// const Bottom = styled.h1`
-//   font-size: 1em;
-//   text-align: center;
-//   color: red;
-//   padding-top: 28px;
-//   font-family: "Press Start 2P", cursive;
-// `;
-// const Signup = styled.h1`
-//   font-size: 1em;
-//   text-align: center;
-//   color: red;
-//   padding-top: 5px;
-//   font-family: "Press Start 2P", cursive;
-// `;
