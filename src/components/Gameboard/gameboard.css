@@ -1,0 +1,38 @@
+.gameBoard{
+  position: relative;
+  height: 480px;
+  width: 800px;
+  margin: auto;
+} 
+/* needs set width, height because this is what player is set relative to */
+
+
+.map_display{
+  position: relative;
+  display: flex; /*This sets the tiles as rows*/
+  margin: auto;
+  height: 480px;
+  width: 800px;
+}
+
+.tile{
+  display: flex;
+}
+
+.path{
+  background-color: #5c0d0d;
+}
+
+.dirt{
+  background-image: url('../../images/red-dirt.jpg');
+}
+
+.metal{
+  background-image: url('../../images/metal-1.jpg')
+}
+.crystal{
+  background-image: url('../../images/crystal.jpg')
+}
+.lava{
+  background-image: url('../../images/lava.jpg')
+}

@@ -1,33 +1,30 @@
 import React, { useEffect, useState } from "react";
 import { Form as FormikForm, Field, withFormik } from "formik";
+import {Link} from 'react-router-dom';
 import * as Yup from "yup";
 import { Form } from "semantic-ui-react";
-import { axiosWithAuth } from '../utils/axiosWithAuth';
+import axios from 'axios'
 import "./signup.css";
 
 const Signup = props => {
-  const [state, setState] = useState({});
+  const [user, setUser] = useState({});
   const { errors, touched, values, handleSubmit, status } = props;
 
   useEffect(() => {
-    setState(status);
+    setUser(status);
   }, [status]);
 
   return (
-    <>
-      <div className="login-panel">
-        <div className="login-title">
-          <h1>SIGN UP</h1>
-        </div>
-        <FormikForm use="semantic-ui-react" className="login-form">
+      <div className="login-pg">
+        <FormikForm use="semantic-ui-react" >
+        <h2>SIGNUP</h2>
           <div>
             <Form.Field>
+              <label> USERNAME: </label>
               <Field
-                className="login-input one"
                 type="username"
                 name="username"
                 data-testid="username"
-                placeholder="Username"
               />
               {touched.username && errors.username && (
                 <p className="error">{errors.username}</p>
@@ -36,40 +33,29 @@ const Signup = props => {
           </div>
           <div>
             <Form.Field>
+              <label> PASSWORD: </label>
               <Field
-                className="login-input"
                 type="password"
                 name="password1"
                 data-testid="password1"
-                placeholder="Password"
               />
-              {/* {touched.password && errors.password && <p className="error">{errors.password}</p>} */}
             </Form.Field>
           </div>{" "}
           <div>
             <Form.Field>
+              <label> CONFIRM PASSWORD: </label>
               <Field
-                className="login-input"
                 type="password"
                 name="password2"
                 data-testid="password2"
-                placeholder="Confirm Password"
               />
-              {/* {touched.password && errors.password && <p className="error">{errors.password}</p>} */}
             </Form.Field>
           </div>
-          <div>
-            <button
-              className="login-button"
-              onClick={handleSubmit}
-              type="submit"
-            >
-              SUBMIT
-            </button>
-          </div>
+
+          <button onSubmit={handleSubmit}> SUBMIT </button>
+          <button><Link to="/login" className="signup">LOGIN</Link></button>
         </FormikForm>
       </div>
-    </>
   );
 };
 
@@ -86,20 +72,17 @@ const FormikLoginForm = withFormik({
   validationSchema: Yup.object().shape({
     username: Yup.string().required("Please enter your username"),
     password1: Yup.string().required("Please enter your password"),
-    password2: Yup.string().required("Please enter your password")
+    password2: Yup.string().required("Please confirm your password")
   }),
   
   handleSubmit(values, { props, setStatus, handleSubmit: e }) {
-    // e.preventDefault()
-
-    return axiosWithAuth()
-      .post("api/registration/", values)
+    axios
+      .post("https://cs1build.herokuapp.com/api/registration/", values)
       .then(res => {
         console.log('Registered!');
         localStorage.setItem("token", res.data.key);
         setStatus(res.data);
-        const id = res.data.id;
-        props.history.push(`/login`);
+        props.history.push(`/game`);
       })
       .catch(err => console.log(err.response));
   }

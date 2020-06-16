@@ -1,6 +1,9 @@
 import axios from 'axios';
 
-export const axiosWithAuth = () => {
+axios.defaults.xsrfCookieName = 'csrftoken'
+axios.defaults.xsrfHeaderName = 'X-CSRFToken'
+
+const axiosWithAuth = () => {
   const token = localStorage.getItem('token');
 
   return axios.create({
@@ -8,6 +11,8 @@ export const axiosWithAuth = () => {
       'Content-Type': 'application/json',
       Authorization: `Token ${token}`
     },
-    baseURL: 'https://cs1build.herokuapp.com/'
+    baseURL: "https://cs1build.herokuapp.com"
   });
 };
+
+ export default axiosWithAuth
