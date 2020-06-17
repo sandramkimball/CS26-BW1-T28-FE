@@ -12,7 +12,8 @@ import character from '../../images/astronaut-1.png'
 
 */
 
-function Player(props){
+function Player({tiles}){
+    // console.log('tiles in player', tiles)
     const [playerTop, setPlayerTop] = useState(0)
     const [playerLeft, setPlayerLeft] = useState(0)
     const [direction, setDirection] = useState('')
@@ -34,7 +35,6 @@ function Player(props){
             return handleNextScreen(e) 
         }
     }
-
 
     function getDirection(e){ 
         e.preventDefault()
@@ -116,14 +116,14 @@ function Player(props){
         
     }
     
-    // function pathBoundaries(oldPos, newPos, props){
-    //     console.log(props)
-        // const tiles = props.map.tiles
-        // const y = newPos[1] / 80
-        // const x = newPos[0] / 80
-        // const nextTile = tiles[y][x]
-        // return nextTile === 0 ? newPos : oldPos
-    // }
+    function pathBoundaries(oldPos, newPos, props){
+        console.log(props)
+        const tiles = props.map.tiles
+        const y = newPos[1] / 80
+        const x = newPos[0] / 80
+        const nextTile = tiles[y][x]
+        return nextTile === 0 ? newPos : oldPos
+    }
 
     // It all comes into action here
     window.addEventListener('keydown', (e) => { firstMove(e) }, 200 )

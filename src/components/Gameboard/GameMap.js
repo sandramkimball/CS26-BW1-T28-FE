@@ -1,6 +1,7 @@
 import React from 'react'
 
-function GameMap({gameInfo, mars_map}){
+
+function GameMap( {gameInfo, mars_map} ){
     const player_size = 80;
     const map_width = 480;
     const map_height = 800;
@@ -16,8 +17,9 @@ function GameMap({gameInfo, mars_map}){
             }
         })
     })  
+
     const tiles = mapTiles(validChambers)
- 
+
     // breaks arr into 2D array 
     function mapTiles( arr ){
         return arr.reduce((rows, key, index) => (index % 6 === 0 ?
@@ -85,9 +87,6 @@ function GameMap({gameInfo, mars_map}){
                     { props.tiles.map(tile=> <MapTile value={tile} />) }
                 </div>
     }
-
-    
-
     
 
     return(
@@ -96,9 +95,8 @@ function GameMap({gameInfo, mars_map}){
         </div>
     )
 }
-
+// console.log(tiles)
 export default GameMap;
-
 
 
     
