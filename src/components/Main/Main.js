@@ -7,8 +7,8 @@ import astronaut from '../../images/astronaut-front.png'
 
 function Main() {
   const [marsChambers, setMarsChambers] = useState();
-  const [gameinfo, setGameInfo] = useState()
-  const [gameStats, setGameStats] = useState()
+  const [gameInfo, setGameInfo] = useState()
+  // const [chamberDesc, setChamberDesc] = useState()
   const [direction, setDirection] = useState('')
   const [loading, setLoading] = useState(true)
   const [loadErr, setLoadErr] = useState(false)
@@ -17,15 +17,14 @@ function Main() {
     axiosWithAuth()
       .get("/api/adv/init")
       .then(res => {
-        let moveChamber = {
-          type: 'chamber',
-          chamber: `${res.data.title}`,
-          text: `${res.data.description}`
-        }
         setMarsChambers(res.data.mars_map)
         setGameInfo(res.data)
         setLoading(false)
-        setGameStats([moveChamber])
+        // setChamberDesc({
+        //   type: 'chamber',
+        //   chamber: `${res.data.title}`,
+        //   text: `${res.data.description}`
+        // })
 
       })
       .catch(err => {
@@ -46,12 +45,12 @@ function Main() {
         {loading=== false && ( 
           <>
             <Gameboard 
-              gameinfo={gameinfo} 
+              gameInfo={gameInfo} 
               marsChambers={marsChambers} 
               direction={direction} 
               setDirection={setDirection}
             /> 
-            <p>Welcome Captain {gameinfo.name}. Use the arrow keys to explore Mars. Good luck. </p> 
+            <p>Welcome Captain {gameInfo.name}. Use the arrow keys to explore Mars. Good luck. </p> 
           </>
         )}
       </div>

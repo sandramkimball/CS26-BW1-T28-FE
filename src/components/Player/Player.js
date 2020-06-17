@@ -26,9 +26,9 @@ function Player(props){
         let oldPos = [playerTop, playerLeft] // Used to check newPos
         let newPos = getNewPosition(oldPos, e) // Used to check map boundaries
 
-        console.log(`Current Pos: ${oldPos}\nTarget Pos: ${newPos}\nGPS: ${direction}`)
+        // console.log(`Current Pos: ${oldPos}\nTarget Pos: ${newPos}\nGPS: ${direction}`)
         
-        if( mapBounderies(oldPos, newPos)===newPos && pathBoundaries(oldPos, newPos, props) ){
+        if( mapBounderies(oldPos, newPos) === newPos){
             return handleMovePlayer(e) 
         } else {
             return handleNextScreen(e) 
@@ -54,7 +54,6 @@ function Player(props){
     }
     
     function getNewPosition(oldPos, e){ 
-        console.log(oldPos)
         e.preventDefault()
         // [e\w, n\s]
         switch(e.keyCode){
@@ -117,17 +116,17 @@ function Player(props){
         
     }
     
-    function pathBoundaries(oldPos, newPos, props){
-        console.log(props)
+    // function pathBoundaries(oldPos, newPos, props){
+    //     console.log(props)
         // const tiles = props.map.tiles
         // const y = newPos[1] / 80
         // const x = newPos[0] / 80
         // const nextTile = tiles[y][x]
         // return nextTile === 0 ? newPos : oldPos
-    }
+    // }
 
     // It all comes into action here
-    window.addEventListener('keyup', (e) => { firstMove(e) }, 200 )
+    window.addEventListener('keydown', (e) => { firstMove(e) }, 200 )
 
 
     return(

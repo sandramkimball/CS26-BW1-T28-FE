@@ -22,7 +22,12 @@
 .path{
   background-color: #5c0d0d;
 }
-
+.concrete{
+  background-color: #26363d;
+}
+.door{
+  background-image: url('../../images/crystal.jpg')
+}
 .dirt{
   background-image: url('../../images/red-dirt.jpg');
 }

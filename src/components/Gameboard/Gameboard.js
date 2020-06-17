@@ -6,10 +6,10 @@ import './gameboard.css'
 
 
 
-function Gameboard({marsChambers, gameInfo, direction, setDirection, move}){   
+function Gameboard({ gameInfo}){   
     return(
         <div className='gameBoard'>
-            <GameMap marsChambers={marsChambers} gameInfo={gameInfo}/>
+            <GameMap mars_map={gameInfo.mars_map} gameInfo={gameInfo}/>
             <Player gameInfo={gameInfo}/>
             <Alien gameInfo={gameInfo}/>
         </div>
