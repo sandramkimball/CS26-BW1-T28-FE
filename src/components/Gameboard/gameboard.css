@@ -19,25 +19,32 @@
   display: flex;
 }
 
-.path{
-  background-color: #5c0d0d;
+.red-soil{
+  background-image: url('../../images/red-dirt.jpg');
 }
-.concrete{
+.path{
+  background-color: #833118;
+}
+.concrete-path{
   background-color: #26363d;
 }
 .door{
-  background-image: url('../../images/crystal.jpg')
+  background-image: url('../../images/doors-josephFredrick.jpg');
+  background-size: contain;
 }
-.dirt{
-  background-image: url('../../images/red-dirt.jpg');
-}
-
 .metal{
-  background-image: url('../../images/metal-1.jpg')
+  background-image: url('../../images/ship.jpg');
+  background-size: contain;
 }
 .crystal{
   background-image: url('../../images/crystal.jpg')
 }
 .lava{
   background-image: url('../../images/lava.jpg')
+}
+.wall{ 
+  background-color: #3f1a09; 
+}
+.wall2{
+  background-color: #121a1d;
 }

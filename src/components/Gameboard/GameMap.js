@@ -5,6 +5,7 @@ function GameMap({gameInfo, mars_map}){
     const map_width = 480;
     const map_height = 800;
     const validChambers=[]
+    console.log(mars_map)
     
     //creates arr based on connected rooms
     mars_map.forEach(room => {
@@ -16,7 +17,6 @@ function GameMap({gameInfo, mars_map}){
         })
     })  
     const tiles = mapTiles(validChambers)
-    console.log('tiles', tiles)
  
     // breaks arr into 2D array 
     function mapTiles( arr ){
@@ -33,29 +33,41 @@ function GameMap({gameInfo, mars_map}){
                 return 1
             case 'Bunker':
                 return 2
+            case 'Port Hole':
+                return 3
             case 'Space Ship':
                 return 4
-            case 'Port Hole':
-                return 5
             case 'the Decent':
+                return 5
+            case 'Hell':
                 return 6
+            case 'Wall':
+                return 7
+            case 'Barrier':
+                return 8
         }
     }
 
     function getTileImg(type){
         switch(type){
             case 0:
-                return 'dirt'
+                return 'red-soil'
             case 1:
                 return 'path'
             case 2:
-                return 'concrete'
+                return 'concrete-path'
+            case 3:
+                return 'door'
             case 4:
                 return 'metal'
             case 5:
                 return 'crystal'
             case 6:
                 return 'lava'
+            case 7:
+                return 'wall'
+            case 8:
+                return 'wall2'
         }
     }
 
@@ -70,7 +82,7 @@ function GameMap({gameInfo, mars_map}){
 
     function MapRow(props){
         return <div className='map_row'>
-                    { props.tiles.map(tile=> <MapTile value={tile}/>) }
+                    { props.tiles.map(tile=> <MapTile value={tile} />) }
                 </div>
     }
 
@@ -80,37 +92,13 @@ function GameMap({gameInfo, mars_map}){
 
     return(
         <div className='map_display'>
-            { tiles.map(row=> <MapRow tiles={row}/>) }
+            { tiles.map(row=> <MapRow tiles={row} />) }
         </div>
     )
 }
 
 export default GameMap;
 
-    // const tiles = {
-        //     chambers: [
-        //         ...marsChambers.map(chamber=> {
-        //             return {
-        //                 ...chamber,
-        //                 x: chamber.x * 10,
-        //                 y: chamber.y * -10,
-        //                 color: chamber.id === gameInfo.chamber_id ? 'brown' : 'black',
-        //                 strokeColor: chamber.id === gameInfo.chamber_id ? 'pink' : 'none',
-        //                 size: chamber.id === gameInfo.cahmber_id ? 200 : 'same'
-        //             };
-        //         }),
-        //         ...adjacentChambers.map(chamber=> {
-        //             return{
-        //                 ...chamber,
-        //                 x: chamber.x * 10,
-        //                 y: chamber.y * -10,
-        //                 color: chamber.id === gameInfo.chamber_id ? 'brown' : 'black',
-        //                 strokeColor: chamber.id === gameInfo.chamber_id ? 'purple' : 'none',
-        //                 size: chamber.id === gameInfo.cahmber_id ? 200 : 100
-        //             };
-        //         })
-        //     ],
-            // links: [...southLinks, ...eastLinks]
-    // }
+
 
     
